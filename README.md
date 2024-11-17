@@ -1,4 +1,4 @@
-# 32Bit_ALU Simulation
+# EXP-3 32Bit_ALU Simulation
 
 # Aim: 
 
@@ -34,27 +34,7 @@ A Blank Document opens up into which the following source code can be typed down
 
 ## Source Code – Using Case Statement :
 
-```
-module alu_32bit_case(y,a,b,f);
-input [31:0]a;
-input [31:0]b;
-input [2:0]f;
-output reg [31:0]y;
-always@(*)
-begin
-case(f)
-3'b000:y=a&b; //AND Operation
-3'b001:y=a|b; //OR Operation
-3'b010:y=~(a&b); //NAND Operation
-3'b011:y=~(a|b); //NOR Operation
-3'b100:y=a+b; //Addition
-3'b101:y=a-b; //Subtraction
-3'b110:y=a*b; //Multiply
-default:y=32'bx;
-endcase
-end
-endmodule
-```
+(Include program here)
 
 Use Save option or Ctrl+S to save the code or click on the save option from the top most right corner and close the text file.
 
@@ -64,28 +44,7 @@ Similarly, create your test bench using gedit <filename_tb>.v or <filename_tb>.v
 
 ## Test Bench :
 
-```
-module alu_32bit_tb_case;
-reg [31:0]a;
-reg [31:0]b;
-reg [2:0]f;
-wire [31:0]y;
-alu_32bit_case test2(.y(y),.a(a),.b(b),.f(f));
-initial
-begin
-a=32'h00000000;
-b=32'hFFFFFFFF;
-#10 f=3'b000;
-#10 f=3'b001;
-#10 f=3'b010;
-#10 f=3'b011;
-#10 f=3'b100;
-#10 f=3'b101;
-#10 f=3'b110;
-#10;$stop;
-end
-endmodule
-```
+(Include test bench program here)
 
 Use Save option or Ctrl+S to save the code or click on the save option from the top most right corner and close the text file.
 
@@ -100,8 +59,7 @@ source /cadence/install/cshrc (mention the path of the tools)
 (The path of cshrc could vary depending on the installation destination)
       
 After this you can see the window like below 
-
-![Picture1](https://github.com/user-attachments/assets/685a95cf-0843-4bf9-841f-f2d21b737da1)
+![Screenshot 2024-11-16 110342](https://github.com/user-attachments/assets/6b0f96e3-a85e-4e88-be09-02b1bd6e852e)
 
 ### Fig 2: Invoke the Cadence Environment
 
@@ -115,16 +73,14 @@ or
 
 
 It will invoke the nclaunch window for functional simulation we can compile,elaborate and simulate it using Multiple Step .
-
-![Picture2](https://github.com/user-attachments/assets/0f120a86-c3a1-440c-a2b0-74ecf93c4519)
+![Screenshot 2024-11-16 110454](https://github.com/user-attachments/assets/fc6ce3c2-3733-4e45-9771-fbb1f1cefd1c)
 
 ### Fig 3: Setting Multi-step simulation
 
 Select Multiple Step and then select “Create cds.lib File” as shown in below figure 
 
 Click the cds.lib file and save the file by clicking on Save option 
-
-![10_6_2024 2_48_15 PM](https://github.com/user-attachments/assets/7f774714-7d5d-40b8-97c3-0c39573770b4)
+![Screenshot 2024-11-16 113006](https://github.com/user-attachments/assets/1300c5e5-55e3-486b-8dab-0c3f3ed08c8b)
 
 ### Fig 4:cds.lib file Creation
 
@@ -136,7 +92,7 @@ We are simulating verilog design without using any libraries
 
 A Click “OK” in the “nclaunch: Open Design Directory” window as shown in below figure 
 
-![Screenshot 2024-10-05 085242](https://github.com/user-attachments/assets/99961b87-6afb-4942-9bcf-4d8808cf056c)
+![image](https://github.com/user-attachments/assets/d5202b97-ee5c-4e0e-9eaf-5f3fa733e546)
 
 ### Fig 5: Selection of Don’t include any libraries
 
@@ -146,9 +102,8 @@ Left side you can see the HDL files. Right side of the window has worklib and sn
 
 Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation .
 
-To perform the function simulation, the following three steps are involved Compilation, Elaboration and Simulation. 
-
-![Screenshot 2024-10-05 085312](https://github.com/user-attachments/assets/c1d66c70-e898-48b9-8b2c-f731fe860597)
+To perform the function simulation, the following three steps are involved Compilation, Elaboration and Simulation.
+![image](https://github.com/user-attachments/assets/8a223792-39c0-45a8-aa93-94e7ed60a451)
 
 ### Fig 6: Nclaunch Window
 
@@ -174,7 +129,7 @@ Left side select the file and in Tools : launch verilog compiler with current se
 
 Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation 
 
-![Screenshot 2024-10-05 085639](https://github.com/user-attachments/assets/f1a68c5c-41fd-4e7f-965a-aca05848b385)
+![386925864-34495198-da85-4703-aa4f-23da7bc4c087](https://github.com/user-attachments/assets/ecd4659b-2a87-42ae-adae-6ed459d36086)
 
 ### Fig 7: Compiled database in worklib
 
@@ -210,7 +165,8 @@ Outputs: Elaborate database updated in mapped library if successful, generates r
 
 After elaboration the file will come under snapshot. Select the test bench and simulate it.
 
-![Screenshot 2024-10-05 085728](https://github.com/user-attachments/assets/3ed91b3e-c76b-4366-aa70-0b70c600502e)
+![386925864-34495198-da85-4703-aa4f-23da7bc4c087](https://github.com/user-attachments/assets/ecd4659b-2a87-42ae-adae-6ed459d36086)
+
 
 ## Fig 8: Elaboration Launch Option
 
@@ -226,16 +182,16 @@ Simulation allow to dump design and test bench signals into a waveform
 
 Steps for simulation – Run the simulation command with simulator options
 
-![Picture6](https://github.com/user-attachments/assets/29ed6d1e-5949-4e7a-8611-34f126030463)
+![386925888-e46b0b13-1a7f-41c6-9d0c-ecaca1a0f920](https://github.com/user-attachments/assets/a3aae521-e39b-46b2-a972-12c201b496d3)
 
 ## Fig 9: Design Browser window for simulation
+![386925905-590a5f03-c915-4138-bb6a-6eba5aa58d15](https://github.com/user-attachments/assets/66683cf8-46cd-467f-b6c4-18d242ff4b8d)
 
-![Picture7](https://github.com/user-attachments/assets/e2342407-785d-497f-9b8e-a96ee3ec4871)
 
 ## Fig 10:Simulation Waveform Window
-
-![Picture8](https://github.com/user-attachments/assets/af1b0083-5727-41db-b3ed-c744ed0be547)
-
-## Fig 11:Simulation Waveform Window
+![386925911-3019798b-c703-4733-847b-56910aca731f](https://github.com/user-attachments/assets/bcc255eb-dd6b-42da-8a1c-1827dfc0b7dc)
 
 
+### Result
+
+The functionality of a 32-bit ALU was successfully verified using a test bench and simulated with the nclaunch tool.
